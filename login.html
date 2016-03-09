@@ -14,9 +14,9 @@
         <section>
             <div id="nav">
                 <ul id="sidebar">
-                    <li><a class="log" href="login.html">Login</a></li>
+                    <li><a class="active" href="login.html">Login</a></li>
                     <li><a class="log" href="#">I'm New!</a></li>
-                    <li><a class="active" href="finalpagetemplate.html">Home</a></li>
+                    <li><a href="finalpagetemplate.html">Home</a></li>
                     <li><a href="registration.html">Schedule and Registration</a></li>
                     <li><a href="#">Catalog</a></li>
                     <li><a href="review.php">Forum</a></li>
@@ -24,7 +24,13 @@
                     <li><a href="#">Activities</a></li>
                 </ul>
             </div>
-            <div id="main">body</div>
+            <div id="main">
+                <form action="login.php" method="post">
+                Child Name: <input type = "text" name = "childName"> <br>
+                Parent Email or Phone (This is the password to login): <input type = "text" name = "parentEmailPhone"> <br>
+                <input type = "submit" value = "login">
+                </form> 
+            </div>
         </section>
     </body>
 </html>
