@@ -58,7 +58,7 @@
         <h1>Welcome to EdCamps</h1>
         <a href="finalpagetemplate.html">
         <div id="logo">
-            <img id="logo" src="edcamplogobig.png" alt="logo" </img>
+            <img id="logo" src="edcamplogobig.png" alt="logo"/>
             <h2 id="click"> Click to Enter </h2>
         
         </div>
