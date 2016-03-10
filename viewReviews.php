@@ -40,8 +40,8 @@ echo "Error: " . $e->getMessage();
                     <li><a class="log" href="#">I'm New!</a></li>
                     <li><a href="finalpagetemplate.html">Home</a></li>
                     <li><a class="active" href="#">Schedule and Registration</a></li>
-                    <li><a href="#">Catalog</a></li>
-                    <li><a href="review.php">Forum</a></li>
+                    <li><a href="catalog.php">Catalog</a></li>
+                    <li><a href="viewReviews.php">Forum</a></li>
                     <li><a href="#">Statistics</a></li>
                     <li><a href="#">Activities</a></li>
                 </ul>
@@ -69,6 +69,7 @@ echo "Error: " . $e->getMessage();
                 echo "<br>";
                 }
 				?>
+			<a href ="review.php">Add a Review(only if logged in)</a>
             </div>
         </section>
     </body>

@@ -1,26 +1,7 @@
 <?php
-session_start();
-require "db_config.php";
-
-$result = array();
-
-try {
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    //Try and find other childName
-
-	$stmt = $dbh->prepare("SELECT * FROM COEN_161_FINAL_UserInformation WHERE childName = :childName");
-	$stmt->bindParam(':childName', $_SESSION["childName"]);
-	$stmt->execute();
-	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-catch(PDOException $e)
-{
-echo "Error: " . $e->getMessage();
-}
-
+	session_start();
+	include ("inventory.php");
 ?>
-
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
@@ -40,25 +21,41 @@ echo "Error: " . $e->getMessage();
                     <li><a class="log" href="#">I'm New!</a></li>
                     <li><a href="finalpagetemplate.html">Home</a></li>
                     <li><a class="active" href="registration.html">Schedule and Registration</a></li>
-                    <li><a href="catalog.php">Catalog</a></li>
+                    <li><a href="#">Catalog</a></li>
                     <li><a href="viewReviews.php">Forum</a></li>
                     <li><a href="#">Statistics</a></li>
                     <li><a href="#">Activities</a></li>
                 </ul>
             </div>
             <div id="main">
-            	<?php
-            	global $result;
+			<table>
+				<tr> <th> Item <th> Price <th>  
+			<?php     
+				 global $items;
+			     global $prices;
 
-            	echo <<< HTML
-            	<p>Child Name: $result[childName]</p>
-            	<p>Child's Grade Level: $result[gradeLevel]</p>
-            	<p>Duration: $result[duration]</p>
-            	<p>Section: $result[section]</p>
+			     foreach($items as $key => $value)
+			     {
+			         echo <<< HTML
+
+			             <tr><td> $value </td>
+			                 <td> &dollar; $prices[$key] </td>
+			             <td> <a href="viewCart.php?add=$key">Add to cart</a></td>
+			         </tr>
 HTML;
-				?>
+				 }
+			?>
+			</table>
+			  
+			  <p> 
+			    <a href="viewCart.php?show">View Shopping Cart</a> 
+			    <br/> <br/>
+				<a href="viewCart.php?checkout">Checkout</a> 
+			    <br/> <br/>
+			    <a href="viewCart.php?clear">Clear Shopping Cart</a> 
+			   </p> 
+
             </div>
         </section>
     </body>
 </html>
-

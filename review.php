@@ -15,11 +15,11 @@
                 <ul id="sidebar">
                     <li><a class="log" href="login.html">Login</a></li>
                     <li><a class="log" href="#">I'm New!</a></li>
-                    <li><a href="finalpagetemplate.html">Home</a></li>
+                    <li><a href="finalpagetemplate.php">Home</a></li>
                     <li><a class="active" href="registration.html">Schedule and Registration</a></li>
                     <li><a href="#">Catalog</a></li>
                     <li><a href="#">Activities</a></li>
-                    <li><a href="review.php">Forum</a></li>
+                    <li><a href="viewReviews.php">Forum</a></li>
                     <li><a href="#">Statistics</a></li>
                 </ul>
             </div>
