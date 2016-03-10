@@ -11,6 +11,7 @@
 				color:white;
 				text-align:center;
 				line-height:50px;
+				cursor: pointer;
 			}
 			#ttt_tab{
 				background-color:#CC0033;
@@ -23,7 +24,15 @@
 			#activity{
 				width:812px;
 				height:812px;
+			}
+			#ttt{
 				background-color:#CC0033;
+			}
+			#shapes{
+				background-color:#66FF66;
+				visibility:hidden;
+				position:relative;
+				bottom:819px;
 			}
 			.marker{
 				visibility:hidden;
@@ -41,12 +50,80 @@
 			var boxes = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 			var map = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 			var game_end = 0;
+			var current_shape = 2;
 			function registerHandlers(){
 				for(var i = 0; i < boxes.length; i++){
 					var e = document.getElementById(boxes[i]);
 					e.addEventListener('click', getFunction(boxes[i]), false);
 				}
 				document.getElementById("replay").addEventListener('click', newGame, false);
+				document.getElementById("ttt_tab").addEventListener('click', switchToTTT, false);
+				document.getElementById("shapes_tab").addEventListener('click', switchToShapes, false);
+				
+				document.getElementById("rectangle").onclick = clickedRectangle;
+				document.getElementById("square").onclick = clickedSquare;
+				document.getElementById("triangle").onclick = clickedTriangle;
+				document.getElementById("circle").onclick = clickedCircle;
+			}
+			
+			function clickedRectangle(){
+				click(1);
+			}
+
+			function clickedSquare(){
+				click(2);
+			}
+			
+			function click(which){
+				if(which == current_shape){
+					document.getElementById("result").innerHTML = "Correct!";
+					var prev_shape = current_shape;
+					while(current_shape == prev_shape) current_shape = Math.floor(Math.random() * 4) + 1;
+				}
+				else{
+					document.getElementById("result").innerHTML = "Wrong!";
+				}
+	
+				switch(current_shape){
+				case 1:
+					document.getElementById("prompt").innerHTML = "Click on the rectangle";
+					break;
+				case 2:
+					document.getElementById("prompt").innerHTML = "Click on the square";
+					break;
+				case 3:
+					document.getElementById("prompt").innerHTML = "Click on the triangle";
+					break;
+					
+				case 4:
+					document.getElementById("prompt").innerHTML = "Click on the circle";
+				}
+			}
+
+function clickedTriangle(){
+	click(3);
+}
+
+function clickedCircle(){
+	click(4);
+}
+
+			
+			function switchToShapes(){
+				var e = document.getElementById("ttt_tab");
+				e.style.border = "outset";
+				document.getElementById("shapes_tab").style.border = "inset";
+				document.getElementById("ttt").style.visibility = "hidden";
+				document.getElementById("shapes").style.visibility = "visible";
+			}
+			
+			function switchToTTT(){
+				var e = document.getElementById("ttt_tab");
+				e.style.border = "inset";
+				document.getElementById("shapes_tab").style.border = "outset";
+				document.getElementById("ttt").style.visibility = "visible";
+				document.getElementById("shapes").style.visibility = "hidden"
+				
 			}
 			
 			function newGame(){
@@ -205,6 +282,14 @@
 						</svg>
 					</div>
 					<div id="shapes">
+					<svg width=812px height=812px version="1.1" xmlns="http://www.w3.org/2000/svg">
+						<text x = "275" y = "100" id = "prompt"> Click on the square </text>
+						<text x = "300" y = "75" id = "result"></text>
+						<rect id = "rectangle" x = "100" y = "200" width="200" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+						<rect id = "square" x = "375" y = "125" width="125" height="125" style="fill:rgb(0,255,255);stroke-width:3;stroke:rgb(0,0,0)" />
+						<polygon id = "triangle" x = "125" y = "400" points="200,310 250,490 160,490" style="fill:red;stroke:purple;stroke-width:1" />
+						<circle id = "circle" cx = "500" cy = "375" r="60" stroke="black" stroke-width="3" fill="green"/>
+					</svg>
 					</div>
 				</div>
 			</div>
