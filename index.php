@@ -55,7 +55,7 @@
     </head>
 <body>
     <div id="main">
-		<a href="finalhomepage.php">
+		<a href="finalmainpage.html">
         <div id="logo">
             <img id="logo" src="edcamplogobig.png" alt="logo"/>
             <h2 id="click"> Click to Enter </h2>

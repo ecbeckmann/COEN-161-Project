@@ -20,7 +20,6 @@ echo "Error: " . $e->getMessage();
 }
 
 ?>
-
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
@@ -30,21 +29,22 @@ echo "Error: " . $e->getMessage();
     </head>
     <body>
         <header>
-            <div id="image">logo</div>
+            <div id="logo">
+                <img id="corner" src = "edcamplogosmall.png"></img>
+            </div>
             <h1>EdCamps Inc.</h1>
             
         </header>
         <section>
             <div id="nav">
                 <ul id="sidebar">
-                    <li><a class="log" href="login.html">Login</a></li>
-                    <li><a class="log" href="#">I'm New!</a></li>
-                    <li><a href="finalpagetemplate.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="finalmainpage.html">Home</a></li>
                     <li><a class="active" href="registration.html">Schedule and Registration</a></li>
                     <li><a href="catalog.php">Catalog</a></li>
                     <li><a href="viewReviews.php">Forum</a></li>
-                    <li><a href="#">Statistics</a></li>
-                    <li><a href="#">Activities</a></li>
+                    <li><a href="finalvisual.html">Statistics</a></li>
+                    <li><a href="activities.html">Activities</a></li>
                 </ul>
             </div>
             <div id="main">

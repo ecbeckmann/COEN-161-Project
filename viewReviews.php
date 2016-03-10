@@ -24,13 +24,15 @@ echo "Error: " . $e->getMessage();
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" type="text/css" href="finalstyle.css">
         <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="stylesheet" type="text/css" href="finalstyle.css">
         <title>EdCamps</title>
     </head>
     <body>
         <header>
-            <div id="image">logo</div>
+            <div id="logo">
+                <img id="corner" src = "edcamplogosmall.png"></img>
+            </div>
             <h1>EdCamps Inc.</h1>
             
         </header>
@@ -38,13 +40,12 @@ echo "Error: " . $e->getMessage();
             <div id="nav">
                 <ul id="sidebar">
                     <li><a class="log" href="login.html">Login</a></li>
-                    <li><a class="log" href="#">I'm New!</a></li>
-                    <li><a href="finalpagetemplate.html">Home</a></li>
-                    <li><a class="active" href="#">Schedule and Registration</a></li>
+                    <li><a href="finalmainpage.html">Home</a></li>
+                    <li><a href="registration.html">Schedule and Registration</a></li>
                     <li><a href="catalog.php">Catalog</a></li>
-                    <li><a href="viewReviews.php">Forum</a></li>
-                    <li><a href="#">Statistics</a></li>
-                    <li><a href="#">Activities</a></li>
+                    <li><a class="active" href="#">Forum</a></li>
+                    <li><a href="finalvisual.html">Statistics</a></li>
+                    <li><a href="activities.html">Activities</a></li>
                 </ul>
             </div>
             <div id="main">
