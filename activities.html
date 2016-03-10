@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="finalstyle.css">
+		<style>
+			.tab{
+				width:400px;
+				height:50px;
+				float:left;
+				color:white;
+				text-align:center;
+				line-height:50px;
+			}
+			#ttt_tab{
+				background-color:#CC0033;
+				border-style:inset;
+			}
+			#shapes_tab{
+				background-color:#66FF66;
+				border-style:outset;
+			}
+			#activity{
+				width:812px;
+				height:812px;
+				background-color:#CC0033;
+			}
+			.marker{
+				visibility:hidden;
+			}
+			#replay{
+				visibility:hidden;
+				cursor: pointer;
+			}
+			.box{
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			var turn=0;
+			var boxes = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+			var map = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+			var game_end = 0;
+			function registerHandlers(){
+				for(var i = 0; i < boxes.length; i++){
+					var e = document.getElementById(boxes[i]);
+					e.addEventListener('click', getFunction(boxes[i]), false);
+				}
+				document.getElementById("replay").addEventListener('click', newGame, false);
+			}
+			
+			function newGame(){
+				game_end = 0;
+				map = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+				for(var i = 0; i < 9; i++){
+					document.getElementById(boxes[i] + "x1").style.visibility = "hidden";
+					document.getElementById(boxes[i] + "x2").style.visibility = "hidden";
+					document.getElementById(boxes[i] + "o").style.visibility = "hidden";
+				}
+					turn = 0;
+					document.getElementById("status").innerHTML = "X's Turn";
+					document.getElementById("replay").style.visibility = "hidden";
+			}
+			
+			function getFunction(box){
+				return function(){
+					place(box);
+				}
+			}
+			
+			function place(box){
+				var i = boxes.indexOf(box);
+				if(game_end) return;
+				if(map[i] == -1){
+					if(turn==0){
+						document.getElementById(box+"x1").style.visibility = "visible";
+						document.getElementById(box+"x2").style.visibility = "visible";
+						turn = 1;
+						map[i] = 0;
+						if(((map[0] == 0) && (map[1] == 0) && (map[2] == 0))||
+							((map[3] == 0) && (map[4] == 0) && (map[5]==0))||
+							((map[6] == 0) && (map[7] == 0) && (map[8] == 0))||
+							((map[0] == 0) && (map[3] == 0) && (map[6] == 0))||
+							((map[1] == 0) && (map[4] == 0) && (map[7] == 0))||
+							((map[2] == 0) && (map[5] == 0) && (map[8] == 0))||
+							((map[0] == 0) && (map[4] == 0) && (map[8] == 0))||
+							((map[2] == 0) && (map[4] == 0) && (map[6] == 0))){
+								document.getElementById("status").innerHTML = "X's Win!"
+								game_end = 1;
+								document.getElementById("replay").style.visibility = "visible";
+							}
+						else document.getElementById("status").innerHTML = "O's Turn"
+						
+					}
+					else{
+						document.getElementById(box+"o").style.visibility = "visible";
+						turn = 0;
+						map[i] = 1;
+						if(((map[0] == 1) && (map[1] == 1) && (	map[2] == 1))||
+							((map[3] == 1) && (map[4] == 1) && (map[5]==1))||
+							((map[6] == 1) && (map[7] == 1) && (map[8] == 1))||
+							((map[0] == 1) && (map[3] == 1) && (map[6] == 1))||
+							((map[1] == 1) && (map[4] == 1) && (map[7] == 1))||
+							((map[2] == 1) && (map[5] == 1) && (map[8] == 1))||
+							((map[0] == 1) && (map[4] == 1) && (map[8] == 1))||
+							((map[2] == 1) && (map[4] == 1) && (map[6] == 1))){
+								document.getElementById("status").innerHTML = "O's Win!"
+								game_end = 1;
+								document.getElementById("replay").style.visibility = "visible";
+							}
+							else document.getElementById("status").innerHTML = "X's Turn"
+					}
+				}
+			}
+		</script>
+			
+        <title>EdCamps</title>
+    </head>
+    <body onload="registerHandlers()">
+        <header>
+             <div id="logo">
+                <img id="corner" src="edcamplogosmall.png"</img>
+            </div>
+            <h1>EdCamps Inc.</h1>
+            
+        </header>
+        <section>
+            <div id="nav">
+                <ul id="sidebar">
+                    <li><a class="log" href="login.html">Login</a></li>
+                    <li><a class="log" href="#">I'm New!</a></li>
+                    <li><a class="active" href="finalpagetemplate.html">Home</a></li>
+                    <li><a href="registration.html">Schedule and Registration</a></li>
+                    <li><a href="catalog.php">Catalog</a></li>
+                    <li><a href="viewReviews.php">Forum</a></li>
+                    <li><a href="#">Statistics</a></li>
+                    <li><a href="#">Activities</a></li>
+                </ul>
+            </div>
+            <div id="main">
+				<div class="tab" id="ttt_tab">
+					Click here to play Tic-Tac-Toe!
+				</div>
+				<div class="tab" id="shapes_tab">
+					Click here to play Find the Shape!
+				</div>
+				<div id="activity">
+					<div id="ttt">
+						<svg width=812px height=812px version="1.1" xmlns="http://www.w3.org/2000/svg">
+							<text font-size="1.5em" x = "337" y = "60" id="status">X's Turn</text>
+							<line x1 = "295" y1 = "100" x2="295" y2="631" style="stroke:rgb(255,255,0);stroke-width:10"/>
+							<line x1 = "472" y1 = "100" x2="472" y2="631" style="stroke:rgb(255,255,0);stroke-width:10"/>
+							<line x1 = "118" y1 = "277" x2="649" y2="277" style="stroke:rgb(255,255,0);stroke-width:10"/>
+							<line x1 = "118" y1 = "454" x2="649" y2="454" style="stroke:rgb(255,255,0);stroke-width:10"/>
+							
+							<rect class = "box" id="one" x= "118" y = "100" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="onex1" x1="148" y1="130" x2="265" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="onex2" x1="265" y1="130" x2="148" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="oneo" cx="206.5" cy="188.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="two" x= "295" y = "100" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="twox1" x1="325" y1="130" x2="442" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="twox2" x1="442" y1="130" x2="325" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="twoo" cx="383.5" cy="188.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="three" x= "472" y = "100" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="threex1" x1="496" y1="130" x2="613" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="threex2" x1="613" y1="130" x2="496" y2="247" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="threeo" cx="560.5" cy="188.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="four" x= "118" y = "277" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="fourx1" x1="148" y1="307" x2="265" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="fourx2" x1="265" y1="307" x2="148" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="fouro" cx="206.5" cy="365.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="five" x= "295" y = "277" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="fivex1" x1="325" y1="307" x2="442" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="fivex2" x1="442" y1="307" x2="325" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="fiveo" cx="383.5" cy="365.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+	
+							<rect class = "box" id="six" x= "472" y = "277" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="sixx1" x1="496" y1="307" x2="613" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="sixx2" x1="613" y1="307" x2="496" y2="424" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="sixo" cx="560.5" cy="365.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="seven" x= "118" y = "454" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="sevenx1" x1="148" y1="484" x2="265" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="sevenx2" x1="265" y1="484" x2="148" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="seveno" cx="206.5" cy="542.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="eight" x= "295" y = "454" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="eightx1" x1="325" y1="484" x2="442" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="eightx2" x1="442" y1="484" x2="325" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="eighto" cx="383.5" cy="542.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<rect class = "box" id="nine" x= "472" y = "454" width="177" height="177" fill-opacity="0.0"/>
+							<line class = "marker" id="ninex1" x1="496" y1="484" x2="613" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<line class = "marker" id="ninex2" x1="613" y1="484" x2="496" y2="601" style="stroke:rgb(0,0,0);stroke-width:2"/>
+							<circle class = "marker" id="nineo" cx="560.5" cy="542.5" r="60" stroke="black" stroke-width="2" fill="none"/>
+							
+							<g id="replay">
+							<rect x = "322" y = "660" width = "120" height = "60" style="fill:lime; stroke-width:3; stroke:rgb(0,0,0)"/>
+							<text font-size = "1.3em" x = "342" y = "695">Replay?</text>
+							</g>
+						</svg>
+					</div>
+					<div id="shapes">
+					</div>
+				</div>
+			</div>
+        </section>
+    </body>
+</html>
