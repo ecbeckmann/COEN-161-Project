@@ -81,6 +81,19 @@
 					document.getElementById("result").innerHTML = "Correct!";
 					var prev_shape = current_shape;
 					while(current_shape == prev_shape) current_shape = Math.floor(Math.random() * 4) + 1;
+					document.getElementById("rectangle").setAttribute("x", Math.random() * 712);
+					document.getElementById("rectangle").setAttribute("y", 100 + Math.random() * 512);
+					document.getElementById("square").setAttribute("x", Math.random()*712);
+					document.getElementById("square").setAttribute("y", 100 + Math.random() * 512);
+					document.getElementById("circle").setAttribute("cx", Math.random()*712);
+					document.getElementById("circle").setAttribute("cy", 100 + Math.random() * 512);
+					document.getElementById("triangle").setAttribute("x", Math.random()*712);
+					document.getElementById("triangle").setAttribute("y", 100 + Math.random() * 512);
+					var tri_x = Math.random() * 712;
+					var tri_y = Math.random() * 512 + 100;
+					"200,310 250,490 160,490"
+					var tri_points = " " + tri_x + "," + tri_y + " " + (tri_x + 50) + "," + (tri_y + 180) + " " + (tri_x - 40) + "," + (tri_y + 180);
+					document.getElementById("triangle").setAttribute("points", tri_points);
 				}
 				else{
 					document.getElementById("result").innerHTML = "Wrong!";
@@ -294,13 +307,13 @@ function clickedCircle(){
 						<text x = "300" y = "75" id = "result"></text>
 						<rect id = "rectangle" x = "100" y = "200" width="200" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
 						<rect id = "square" x = "375" y = "125" width="125" height="125" style="fill:rgb(0,255,255);stroke-width:3;stroke:rgb(0,0,0)" />
-						<polygon id = "triangle" x = "125" y = "400" points="200,310 250,490 160,490" style="fill:red;stroke:purple;stroke-width:1" />
+						<polygon id = "triangle" points="200,310 250,490 160,490" style="fill:red;stroke:purple;stroke-width:1" />
 						<circle id = "circle" cx = "500" cy = "375" r="60" stroke="black" stroke-width="3" fill="green"/>
 					</svg>
 					</div>
 				</div>
-				<p style="position:relative;bottom:30px">
-					Here at EdCamps, we have many indoor and outdoor activities to stimulate learning in children.  We have many education software games, a few of them shown here, to help them develop memory, analytical, and vocabulary skills.  In addition, we offer many programming courses that allow children to try and develop their own games.  We are not only an indoor camp; we offer many sports activities as well, such as swimming, basketball, volleyball, and baseball.  In addition, lunch and snack will be provided for children.
+				<p style="position:relative;bottom:30px;width:812px">
+					Here at EdCamps, we have many indoor and outdoor activities to stimulate learning in children.  We have many education software games, a few of them shown here, to help them develop memory, analytical, and vocabulary skills.  In addition, we offer many programming courses that allow children to try and develop their own games.  We are not only an indoor camp; we offer many sports activities as well, such as swimming, basketball, volleyball, and baseball.  In a single day, a child will get to experience a wide range of activities which will keep them active and engaged the entire time.  In addition, lunch and snack will be provided for children.  Our fun and engaging activities are why our camp has been awarded "Bay Area Camp of the Year" for three years in a row.
 				</p>
 			</div>
         </section>
