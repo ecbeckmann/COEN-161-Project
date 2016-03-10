@@ -45,6 +45,10 @@
 			.box{
 				cursor: pointer;
 			}
+			p{
+				border-style: dashed;
+				padding: 5px;
+			}
 		</style>
 		<script>
 			var turn=0;
@@ -152,6 +156,7 @@ function clickedCircle(){
 					turn = 0;
 					document.getElementById("status").innerHTML = "X's Turn";
 					document.getElementById("replay").style.visibility = "hidden";
+					moves = 0;
 			}
 			
 			function getFunction(box){
