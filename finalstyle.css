@@ -33,6 +33,18 @@ footer {
     background: #ddd;
  }
 
+#logo {
+    
+    position: fixed;
+}
+
+#corner{
+    width: 90px;
+    margin-left: 5px;
+    margin-top: 20px;
+    
+}
+
 #sidebar {
     list-style-type: none;
     margin: 0px;
