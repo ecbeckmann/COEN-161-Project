@@ -113,6 +113,7 @@ function checkout()
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
         <link rel="stylesheet" type="text/css" href="finalstyle.css">
         <title>EdCamps</title>
     </head>
