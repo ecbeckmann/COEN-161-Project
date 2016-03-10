@@ -25,14 +25,18 @@
                 padding-left: 44%;
                 padding-top: 12%;
             }
-            #button {
-                background-color: #7fd2fb;
-                margin-top: 0%;
-                height: 300px;
-                opacity: 0;
+            #logo{
+                width: 100%;
+                position: fixed;
+                z-index: 1;
             }
-            #button:hover{
-                background-color: #72bde1;
+        
+            #logo:hover {
+                opacity: 0.5;
+            }
+        
+            #click{
+            
                 opacity: 1;
             }
             footer {
@@ -52,8 +56,9 @@
     <div id="main">
         <h1>Welcome to EdCamps</h1>
         <a href="finalpagetemplate.html">
-        <div id="button">
-            <h2> Click to Enter </h2>
+        <div id="logo">
+            <img id="logo" src="edcamplogobig.png" alt="logo" </img>
+            <h2 id="click"> Click to Enter </h2>
         
         </div>
         </a>
