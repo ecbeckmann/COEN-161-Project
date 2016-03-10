@@ -25,6 +25,7 @@ echo "Error: " . $e->getMessage();
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="finalstyle.css">
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
         <title>EdCamps</title>
     </head>
     <body>
